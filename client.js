@@ -8,10 +8,18 @@ const connect = function() {
 
   conn.setEncoding("utf8"); // interpret incoming data as text
 
-  conn.write("Name: CLS");
-
   conn.on("connect", () => {
     console.log("Successfully connected to game server");
+    conn.write("Name: CLS");
+
+    setInterval(() => {
+      conn.write("Move: up");
+    }, 5000);
+
+    setInterval(() => {
+      conn.write("Move: right");
+    }, 1000);
+
   });
 
   conn.on("data", (data) => {
