@@ -1,9 +1,11 @@
+const { IP, PORT } = require("./constants");
+
 const net = require("net");
 
 const connect = function() {
   const conn = net.createConnection({
-    host: 'localhost',
-    port: 50541
+    host: IP,
+    port: PORT
   });
 
   conn.setEncoding("utf8"); // interpret incoming data as text
@@ -12,13 +14,13 @@ const connect = function() {
     console.log("Successfully connected to game server");
     conn.write("Name: CLS");
 
-    setInterval(() => {
-      conn.write("Move: up");
-    }, 5000);
+    // setInterval(() => {
+    //   conn.write("Move: up");
+    // }, 5000);
 
-    setInterval(() => {
-      conn.write("Move: right");
-    }, 1000);
+    // setInterval(() => {
+    //   conn.write("Move: right");
+    // }, 1000);
 
   });
 
@@ -28,7 +30,5 @@ const connect = function() {
 
   return conn;
 };
-
-console.log("Connecting ...");
 
 module.exports = connect;
